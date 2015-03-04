@@ -4,13 +4,12 @@
 
     <parent>
         <groupId>org.epiphanic</groupId>
-        <artifactId>org-epiphanic-libraries-performance</artifactId>
+        <artifactId>thoreau</artifactId>
         <version>${org.epiphanic.libraries.performance.version}</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>org-epiphanic-libraries-performance-impl</artifactId>
-    <packaging>jar</packaging>
+    <artifactId>thoreau-impl</artifactId>
 
     <name>Thoreau - Instrumentation Library Implementation</name>
 
@@ -28,7 +27,7 @@
         <!-- Make sure we can use our APIs. -->
         <dependency>
             <groupId>org.epiphanic</groupId>
-            <artifactId>org-epiphanic-libraries-performance-api</artifactId>
+            <artifactId>thoreau-api</artifactId>
             <version>${org.epiphanic.libraries.performance.version}</version>
         </dependency>
 
