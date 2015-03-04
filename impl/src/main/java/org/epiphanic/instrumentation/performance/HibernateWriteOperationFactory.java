@@ -9,7 +9,6 @@ package org.epiphanic.instrumentation.performance;
 import java.util.concurrent.Callable;
 
 import org.hibernate.SessionFactory;
-import org.jetbrains.annotations.NotNull;
 
 
 /**
@@ -34,7 +33,6 @@ public class HibernateWriteOperationFactory implements IWriteOperationFactory<Me
 	 *
 	 * @return A non-<code>null</code> implementation of {@link org.hibernate.SessionFactory}.
 	 */
-	@NotNull
 	public SessionFactory getSessionFactory()
 	{
 		return _sessionFactory;
@@ -46,7 +44,7 @@ public class HibernateWriteOperationFactory implements IWriteOperationFactory<Me
 	 *
 	 * @param sessionFactory A non-<code>null</code> implementation of {@link org.hibernate.SessionFactory}.
 	 */
-	public void setSessionFactory(@NotNull final SessionFactory sessionFactory)
+	public void setSessionFactory(final SessionFactory sessionFactory)
 	{
 		_sessionFactory = sessionFactory;
 	}

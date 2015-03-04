@@ -8,8 +8,6 @@ package org.epiphanic.instrumentation.performance;
 
 import java.util.concurrent.ExecutorService;
 
-import org.jetbrains.annotations.NotNull;
-
 
 /**
  * Given an entity of type T, unbounded, wires together all the pieces necessary to log it to a persistent context: when
@@ -43,7 +41,6 @@ public class GenericAsynchronousLogger<T> implements IStatisticsLogger<T>
 	 * @return An instance of {@link java.util.concurrent.ExecutorService} to consume callables. Must not be
 	 *         <code>null</code>.
 	 */
-	@NotNull
 	public ExecutorService getMessageProcessor()
 	{
 		return _messageProcessor;
@@ -56,7 +53,7 @@ public class GenericAsynchronousLogger<T> implements IStatisticsLogger<T>
 	 *
 	 * @param messageProcessor A non-<code>null</code> implementation of {@link java.util.concurrent.ExecutorService}.
 	 */
-	public void setMessageProcessor(@NotNull final ExecutorService messageProcessor)
+	public void setMessageProcessor(final ExecutorService messageProcessor)
 	{
 		_messageProcessor = messageProcessor;
 	}
@@ -68,7 +65,6 @@ public class GenericAsynchronousLogger<T> implements IStatisticsLogger<T>
 	 *
 	 * @return A non-<code>null</code> implementation of {@link org.epiphanic.instrumentation.performance.IWriteOperationFactory}.
 	 */
-	@NotNull
 	public IWriteOperationFactory<T> getWriteOperationFactory()
 	{
 		return _writeOperationFactory;
@@ -81,14 +77,14 @@ public class GenericAsynchronousLogger<T> implements IStatisticsLogger<T>
 	 *
 	 * @param writeOperationFactory A non-<code>null</code> implementation of {@link org.epiphanic.instrumentation.performance.IWriteOperationFactory}.
 	 */
-	public void setWriteOperationFactory(@NotNull final IWriteOperationFactory<T> writeOperationFactory)
+	public void setWriteOperationFactory(final IWriteOperationFactory<T> writeOperationFactory)
 	{
 		_writeOperationFactory = writeOperationFactory;
 	}
 
 
 	@Override
-	public void writeStatistic(@NotNull final T statistic)
+	public void writeStatistic(final T statistic)
 	{
 		getMessageProcessor().submit(getWriteOperationFactory().createWriteOperation(statistic));
 	}

@@ -10,7 +10,6 @@ import java.util.concurrent.Callable;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.jetbrains.annotations.NotNull;
 
 
 /**
@@ -38,7 +37,6 @@ public final class HibernateWriteOperation<T> implements Callable<Void>
 	 *
 	 * @return An entity to persist, will not be <code>null</code>.
 	 */
-	@NotNull
 	public T getEntityToWrite()
 	{
 		return _entityToWrite;
@@ -50,7 +48,7 @@ public final class HibernateWriteOperation<T> implements Callable<Void>
 	 *
 	 * @param entityToWrite An entity to write to a persistent source. Must not be <code>null</code>.
 	 */
-	public void setEntityToWrite(@NotNull final T entityToWrite)
+	public void setEntityToWrite(final T entityToWrite)
 	{
 		_entityToWrite = entityToWrite;
 	}
@@ -62,7 +60,6 @@ public final class HibernateWriteOperation<T> implements Callable<Void>
 	 *
 	 * @return A non-<code>null</code> instance of {@link org.hibernate.SessionFactory}.
 	 */
-	@NotNull
 	public SessionFactory getSessionFactory()
 	{
 		return _sessionFactory;
@@ -74,7 +71,7 @@ public final class HibernateWriteOperation<T> implements Callable<Void>
 	 *
 	 * @param sessionFactory A non-<code>null</code>, fully configured instance of {@link org.hibernate.SessionFactory}.
 	 */
-	public void setSessionFactory(@NotNull final SessionFactory sessionFactory)
+	public void setSessionFactory(final SessionFactory sessionFactory)
 	{
 		_sessionFactory = sessionFactory;
 	}

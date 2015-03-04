@@ -10,7 +10,6 @@ import java.util.Date;
 
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
-import org.jetbrains.annotations.NotNull;
 
 
 /**
@@ -39,7 +38,7 @@ public class AOPMetricGatherer extends AbstractMetricGatherer<MethodCallStatisti
 	 * @throws Throwable if there's an exception in the underlying operation.
 	 */
 	@Override
-	public Object invoke(@NotNull final MethodInvocation methodInvocation) throws Throwable
+	public Object invoke(final MethodInvocation methodInvocation) throws Throwable
 	{
 		// We need these for our context.
 		Object result = null;
@@ -97,8 +96,7 @@ public class AOPMetricGatherer extends AbstractMetricGatherer<MethodCallStatisti
 	 * @param methodInvocation Our {@link org.aopalliance.intercept.MethodInvocation} to get the name of.
 	 * @return The name of the method being invoked. Will not be <code>null</code>.
 	 */
-	@NotNull 
-	String getMethodName(@NotNull final MethodInvocation methodInvocation)
+	String getMethodName(final MethodInvocation methodInvocation)
 	{
 		return methodInvocation.getMethod().getName();
 	}
@@ -112,7 +110,6 @@ public class AOPMetricGatherer extends AbstractMetricGatherer<MethodCallStatisti
 	 *
 	 * @return A non-<code>null</code> {@link org.epiphanic.instrumentation.performance.MethodCallStatistic} instance.
 	 */
-	@NotNull
 	MethodCallStatistic createMethodCallStatistic()
 	{
 		return new MethodCallStatistic();		
@@ -126,7 +123,6 @@ public class AOPMetricGatherer extends AbstractMetricGatherer<MethodCallStatisti
 	 *
 	 * @return The current date. Will not be <code>null</code>.
 	 */
-	@NotNull
 	Date getCurrentDate()
 	{
 		return new Date();	

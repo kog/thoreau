@@ -15,7 +15,6 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 
-import org.jetbrains.annotations.NotNull;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -121,7 +120,7 @@ public final class AOPMetricGathererIntegrationTest
 		Collections.sort(stats, new Comparator<MethodCallStatistic>()
 		{
 			@Override
-			public int compare(@NotNull final MethodCallStatistic lhs, @NotNull final MethodCallStatistic rhs)
+			public int compare(final MethodCallStatistic lhs, final MethodCallStatistic rhs)
 			{
 				return lhs.getId().compareTo(rhs.getId());
 			}

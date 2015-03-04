@@ -8,8 +8,6 @@ package org.epiphanic.instrumentation.performance;
 
 import java.util.Date;
 
-import org.jetbrains.annotations.NotNull;
-
 
 /**
  * This rather boring class has a few methods on it to show-case the instrumentation.<p/>
@@ -52,7 +50,6 @@ public class BoringClassWithInstrumentableMethods implements IBoringClassWithIns
 	}
 
 
-	@NotNull 
 	@Override
 	public Object longRunningObjectCreatingMethod() throws Exception
 	{

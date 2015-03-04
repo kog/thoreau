@@ -12,7 +12,6 @@ import javax.sql.DataSource;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.jetbrains.annotations.NotNull;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -132,8 +131,7 @@ public final class HibernateWriteOperationIntegrationTest
 	 * @param knownGoodStat The reference {@link org.epiphanic.instrumentation.performance.MethodCallStatistic}.
 	 * @param statToCompare The persisted {@link org.epiphanic.instrumentation.performance.MethodCallStatistic}.
 	 */
-	private void assertMethodCallStatisticEqualityByValue(@NotNull final MethodCallStatistic knownGoodStat,
-														  @NotNull final MethodCallStatistic statToCompare)
+	private void assertMethodCallStatisticEqualityByValue(final MethodCallStatistic knownGoodStat, final MethodCallStatistic statToCompare)
 	{
 		Assert.assertEquals(knownGoodStat.getId(), statToCompare.getId());
 		Assert.assertEquals(knownGoodStat.getMetaData(), statToCompare.getMetaData());

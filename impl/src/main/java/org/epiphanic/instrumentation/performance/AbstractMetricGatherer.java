@@ -6,9 +6,6 @@
 package org.epiphanic.instrumentation.performance;
 
 
-import org.jetbrains.annotations.NotNull;
-
-
 /**
  * An abstract class that allows injection of a {@link org.epiphanic.instrumentation.performance.IStatisticsLogger}
  * implementation. Can be extended and wired up in any number of ways, and is the class that you use for instrumenting
@@ -31,7 +28,6 @@ public abstract class AbstractMetricGatherer<T>
 	 *
 	 * @return A non-<code>null</code> instance of {@link org.epiphanic.instrumentation.performance.IStatisticsLogger}.
 	 */
-	@NotNull
 	public IStatisticsLogger<T> getStatisticsLogger()
 	{
 		return _logger;
@@ -44,7 +40,7 @@ public abstract class AbstractMetricGatherer<T>
 	 *
 	 * @param logger A valid, non-<code>null</code> implementation of {@link org.epiphanic.instrumentation.performance.IStatisticsLogger}.
 	 */
-	public void setStatisticsLogger(@NotNull final IStatisticsLogger<T> logger)
+	public void setStatisticsLogger(final IStatisticsLogger<T> logger)
 	{
 		_logger = logger;
 	}
