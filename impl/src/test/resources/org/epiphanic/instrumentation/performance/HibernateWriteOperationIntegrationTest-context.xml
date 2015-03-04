@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
         
-<!--
-  ~ org-epiphanic-libraries-performance
-  ~ Copyright 2010 Epiphanic Networks
-  ~
-  ~ This source is licensed under the terms of the MIT license. Please see the distributed license.txt for details.
-  -->
-
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans

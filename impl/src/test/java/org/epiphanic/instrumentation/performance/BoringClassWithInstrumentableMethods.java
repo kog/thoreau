@@ -1,8 +1,7 @@
-/*
- * org-epiphanic-libraries-performance
- * Copyright 2010 Epiphanic Networks
+/**
+ * Thoreau: a demonstration library for performance instrumentation.
  *
- * This source is licensed under the terms of the MIT license. Please see the distributed license.txt for details.
+ * This source is licensed under the MIT license. Please see the distributed license.txt for details.
  */
 package org.epiphanic.instrumentation.performance;
 
