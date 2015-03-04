@@ -5,9 +5,7 @@
  */
 package org.epiphanic.instrumentation.performance;
 
-
 import java.util.Date;
-
 
 /**
  * Provides an interface for a method call statistic POJO. Stores information about the amount of time it took to run

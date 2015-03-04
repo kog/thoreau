@@ -5,13 +5,12 @@
  */
 package org.epiphanic.instrumentation.performance;
 
-
-import java.util.Date;
-
 import org.aopalliance.intercept.MethodInvocation;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
+
+import java.util.Date;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyString;
@@ -21,7 +20,6 @@ import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
-
 
 /**
  * Tests the algorithm of our {@link org.epiphanic.instrumentation.performance.AOPMetricGatherer}, making sure that we
@@ -70,7 +68,6 @@ public final class AOPMetricGathererTest
 		// Make sure nothing else happened.
 		verifyNoMoreInteractions(aopMetricGatherer, methodStatistic, invocation, logger);
 	}
-
 
 	/**
 	 * Tests the unfortunate test when our method under instrumentation fails.

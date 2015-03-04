@@ -5,18 +5,16 @@
  */
 package org.epiphanic.instrumentation.performance;
 
+import org.junit.Test;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
-
-import org.junit.Test;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-
 
 /**
  * Tests that our {@link org.epiphanic.instrumentation.performance.GenericAsynchronousLogger} works as expected.<p/>
@@ -36,7 +34,7 @@ public final class GenericAsynchronousLoggerTest
 		// Create our mocks and objects to test.
 		final ExecutorService executorService = mock(ExecutorService.class);
 		final IWriteOperationFactory<MethodCallStatistic> writeOperationFactory = mock(IWriteOperationFactory.class);
-		final GenericAsynchronousLogger testClass = spy(new GenericAsynchronousLogger<MethodCallStatistic>());
+		final GenericAsynchronousLogger testClass = spy(new GenericAsynchronousLogger<>());
 		final MethodCallStatistic stat = new MethodCallStatistic();
 
 		// Wire up our class under test.

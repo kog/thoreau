@@ -5,7 +5,6 @@
  */
 package org.epiphanic.instrumentation.performance;
 
-
 /**
  * This class acts as a type-specific wrapper around our {@link org.epiphanic.instrumentation.performance.GenericAsynchronousLogger},
  * telling it to log {@link org.epiphanic.instrumentation.performance.MethodCallStatistic} types.<p/>

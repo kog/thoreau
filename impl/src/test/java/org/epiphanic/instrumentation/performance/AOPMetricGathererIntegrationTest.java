@@ -5,26 +5,20 @@
  */
 package org.epiphanic.instrumentation.performance;
 
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
-import javax.annotation.Resource;
-import javax.sql.DataSource;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.annotation.Resource;
+import javax.sql.DataSource;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  * A full-blown, wired up, Springtastic integration test of our {@link org.epiphanic.instrumentation.performance.AOPMetricGatherer},
@@ -57,7 +51,6 @@ public final class AOPMetricGathererIntegrationTest
 	 */
 	private JdbcTemplate _jdbcTemplate;
 
-
 	/**
 	 * Runs any set up for our unit tests. In this case we create a {@link org.springframework.jdbc.core.JdbcTemplate} for
 	 * testing our database state later.
@@ -67,7 +60,6 @@ public final class AOPMetricGathererIntegrationTest
 	{
 		_jdbcTemplate = new JdbcTemplate(_dataSource);
 	}
-
 
 	/**
 	 * Given our instrumented class {@link org.epiphanic.instrumentation.performance.BoringClassWithInstrumentableMethods},
@@ -92,30 +84,26 @@ public final class AOPMetricGathererIntegrationTest
 		}
 		catch (final Exception ex)
 		{
+            // We need this to fail.
 		}
 
 		// Make sure our writers have a chance to finish.
 		Thread.sleep(5000);
 
 		// Pull back our entities from the database then sort it by ID.
-		final List<MethodCallStatistic> stats = _jdbcTemplate.query("select * from method_performance", new RowMapper<MethodCallStatistic>()
-		{
-			@Override
-			public MethodCallStatistic mapRow(final ResultSet rs, final int rowNum) throws SQLException
-			{
-				final MethodCallStatistic methodCallStatistic = new MethodCallStatistic();
+		final List<MethodCallStatistic> stats = _jdbcTemplate.query("select * from method_performance", (rs, rowNum) -> {
+            final MethodCallStatistic methodCallStatistic = new MethodCallStatistic();
 
-				methodCallStatistic.setId(rs.getLong("metric_id"));
-				methodCallStatistic.setUserId(rs.getLong("user_id"));
-				methodCallStatistic.setOperationName(rs.getString("operation_name"));
-				methodCallStatistic.setOperationStart(rs.getDate("start_time"));
-				methodCallStatistic.setOperationCompletion(rs.getDate("end_time"));
-				methodCallStatistic.setMetaData(rs.getString("metadata"));
-				methodCallStatistic.setOperationSuccessful(rs.getBoolean("success"));
+            methodCallStatistic.setId(rs.getLong("metric_id"));
+            methodCallStatistic.setUserId(rs.getLong("user_id"));
+            methodCallStatistic.setOperationName(rs.getString("operation_name"));
+            methodCallStatistic.setOperationStart(rs.getDate("start_time"));
+            methodCallStatistic.setOperationCompletion(rs.getDate("end_time"));
+            methodCallStatistic.setMetaData(rs.getString("metadata"));
+            methodCallStatistic.setOperationSuccessful(rs.getBoolean("success"));
 
-				return methodCallStatistic;
-			}
-		});
+            return methodCallStatistic;
+        });
 
 		Collections.sort(stats, new Comparator<MethodCallStatistic>()
 		{
@@ -135,7 +123,6 @@ public final class AOPMetricGathererIntegrationTest
 		verifyEntity(stats.get(3), 4L, "longRunningObjectCreatingMethod", null, true);
 		verifyEntity(stats.get(4), 5L, "exceptionThrowingMethod", "java.lang.Exception: I am the very modern model of a modern Major-General.", false);
 	}
-
 
 	/**
 	 * A utility method to verify an extracted object vs. what we think should be set on it. In this case we can skip all

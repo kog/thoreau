@@ -5,9 +5,6 @@
  */
 package org.epiphanic.instrumentation.performance;
 
-
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
+import java.util.Date;
 
 /**
  * Holds information about a given method call, including a name for the operation, a start and end time and metadata.
@@ -74,7 +71,6 @@ public class MethodCallStatistic implements IMethodCallStatistic
 	 */
 	private boolean _successful;
 
-
 	@Override
 	@Id
 	@Column(name = "METRIC_ID")
@@ -84,12 +80,10 @@ public class MethodCallStatistic implements IMethodCallStatistic
 		return _id;
 	}
 
-
 	public void setId(final Long id)
 	{
 		_id = id;
 	}
-
 
 	/**
 	 * Gets an optional user ID that may be associated with the method call.
@@ -103,7 +97,6 @@ public class MethodCallStatistic implements IMethodCallStatistic
 		return _userId;
 	}
 
-
 	/**
 	 * Sets an optional user ID of the user that is associated with the method call.
 	 *
@@ -114,7 +107,6 @@ public class MethodCallStatistic implements IMethodCallStatistic
 		_userId = userId;
 	}
 
-
 	@Override
 	@Column(name = "OPERATION_NAME")
 	public String getOperationName()
@@ -122,12 +114,10 @@ public class MethodCallStatistic implements IMethodCallStatistic
 		return _operationName;
 	}
 
-
 	public void setOperationName(final String operationName)
 	{
 		_operationName = operationName;
 	}
-
 
 	@Override
 	@Column(name = "START_TIME")
@@ -136,12 +126,10 @@ public class MethodCallStatistic implements IMethodCallStatistic
 		return _operationStart;
 	}
 
-
 	public void setOperationStart(final Date operationStart)
 	{
 		_operationStart = operationStart;
 	}
-
 
 	@Override
 	@Column(name = "END_TIME")
@@ -150,12 +138,10 @@ public class MethodCallStatistic implements IMethodCallStatistic
 		return _operationCompletion;
 	}
 
-
 	public void setOperationCompletion(final Date operationCompletion)
 	{
 		_operationCompletion = operationCompletion;
 	}
-
 
 	@Override
 	@Column(name="METADATA")
@@ -164,12 +150,10 @@ public class MethodCallStatistic implements IMethodCallStatistic
 		return _metaData;
 	}
 
-
 	public void setMetaData(final String metaData)
 	{
 		_metaData = metaData;
 	}
-
 
 	@Override
 	@Column(name="SUCCESS")
@@ -177,7 +161,6 @@ public class MethodCallStatistic implements IMethodCallStatistic
 	{
 		return !_successful;
 	}
-
 
 	public void setOperationSuccessful(final boolean successful)
 	{

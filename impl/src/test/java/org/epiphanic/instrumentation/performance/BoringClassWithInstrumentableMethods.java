@@ -5,9 +5,7 @@
  */
 package org.epiphanic.instrumentation.performance;
 
-
 import java.util.Date;
-
 
 /**
  * This rather boring class has a few methods on it to show-case the instrumentation.<p/>
@@ -20,7 +18,6 @@ public class BoringClassWithInstrumentableMethods implements IBoringClassWithIns
 	public void voidReturningMethodThatDoesNothing()
 	{
 		// This method is about as useful as a chocolate fire-guard.
-		return;
 	}
 
 	// [GregF 04/11/2010] - I shamelessly stole these fibonacci algorithms off the Literate Programming wiki and did a
@@ -32,7 +29,6 @@ public class BoringClassWithInstrumentableMethods implements IBoringClassWithIns
 	{
 		return n < 2 ? n : fibonacciSequenceRecursive(n - 1) + fibonacciSequenceRecursive(n - 2);
 	}
-
 
 	@Override
 	public int fibonacciSequenceIterative(final int n)
@@ -49,7 +45,6 @@ public class BoringClassWithInstrumentableMethods implements IBoringClassWithIns
 		return prev1;
 	}
 
-
 	@Override
 	public Object longRunningObjectCreatingMethod() throws Exception
 	{
@@ -57,7 +52,6 @@ public class BoringClassWithInstrumentableMethods implements IBoringClassWithIns
 		Thread.sleep(5000);
 		return object;
 	}
-
 
 	@Override
 	public void exceptionThrowingMethod() throws Exception

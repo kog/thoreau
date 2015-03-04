@@ -5,12 +5,10 @@
  */
 package org.epiphanic.instrumentation.performance;
 
-
-import java.util.concurrent.Callable;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import java.util.concurrent.Callable;
 
 /**
  * A Hibernate-based write operation, to be produced by an implementation of {@link
@@ -31,7 +29,6 @@ public final class HibernateWriteOperation<T> implements Callable<Void>
 	 */
 	private SessionFactory _sessionFactory;
 
-
 	/**
 	 * Returns our injected entity that we wish to write to a persistent source.
 	 *
@@ -42,7 +39,6 @@ public final class HibernateWriteOperation<T> implements Callable<Void>
 		return _entityToWrite;
 	}
 
-
 	/**
 	 * Sets our entity that we wish to write to a persistent source.
 	 *
@@ -52,7 +48,6 @@ public final class HibernateWriteOperation<T> implements Callable<Void>
 	{
 		_entityToWrite = entityToWrite;
 	}
-
 
 	/**
 	 * Gets our injected instance of {@link SessionFactory} to use for dealing with anything we've configured for
@@ -65,7 +60,6 @@ public final class HibernateWriteOperation<T> implements Callable<Void>
 		return _sessionFactory;
 	}
 
-
 	/**
 	 * Sets an instance of {@link org.hibernate.SessionFactory} to use for our Hibernate operations.
 	 *
@@ -75,7 +69,6 @@ public final class HibernateWriteOperation<T> implements Callable<Void>
 	{
 		_sessionFactory = sessionFactory;
 	}
-
 
 	/**
 	 * The meat of the class - our implementation of {@link java.util.concurrent.Callable}. In this write operation, we
@@ -94,5 +87,4 @@ public final class HibernateWriteOperation<T> implements Callable<Void>
 
 		return null;
 	}
-
 }

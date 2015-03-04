@@ -5,11 +5,9 @@
  */
 package org.epiphanic.instrumentation.performance;
 
-
-import java.util.concurrent.Callable;
-
 import org.hibernate.SessionFactory;
 
+import java.util.concurrent.Callable;
 
 /**
  * Produces instances of {@link org.epiphanic.instrumentation.performance.HibernateWriteOperation} callables. This
@@ -27,7 +25,6 @@ public class HibernateWriteOperationFactory implements IWriteOperationFactory<Me
 	 */
 	private SessionFactory _sessionFactory;
 
-
 	/**
 	 * Gets our injected {@link org.hibernate.SessionFactory} to use for interacting with our persistence context.
 	 *
@@ -37,7 +34,6 @@ public class HibernateWriteOperationFactory implements IWriteOperationFactory<Me
 	{
 		return _sessionFactory;
 	}
-
 
 	/**
 	 * Sets an implementation of {@link org.hibernate.SessionFactory} to use with our write operations.
@@ -49,12 +45,10 @@ public class HibernateWriteOperationFactory implements IWriteOperationFactory<Me
 		_sessionFactory = sessionFactory;
 	}
 
-
 	@Override
 	public Callable<Void> createWriteOperation(final MethodCallStatistic statisticsEntity)
 	{
-		final HibernateWriteOperation<MethodCallStatistic> writeOperation =
-				new HibernateWriteOperation<MethodCallStatistic>();
+		final HibernateWriteOperation<MethodCallStatistic> writeOperation = new HibernateWriteOperation<>();
 		
 		writeOperation.setEntityToWrite(statisticsEntity);
 		writeOperation.setSessionFactory(getSessionFactory());

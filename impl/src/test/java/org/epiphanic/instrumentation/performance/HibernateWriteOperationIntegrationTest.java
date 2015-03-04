@@ -5,11 +5,6 @@
  */
 package org.epiphanic.instrumentation.performance;
 
-
-import java.util.Date;
-
-import javax.sql.DataSource;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.After;
@@ -22,6 +17,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.sql.DataSource;
+import java.util.Date;
 
 /**
  * Provides a database-connected integration test demonstrating that our write operation works as intended, and also
@@ -65,7 +62,6 @@ public final class HibernateWriteOperationIntegrationTest
 	 */
 	private JdbcTemplate _jdbcTemplate;
 
-
 	/**
 	 * Runs any set up for our unit tests. In this case, we create a hibernate {@link org.hibernate.Session} that we can
 	 * use for grabbing mapped entities, as well as creating a {@link org.springframework.jdbc.core.JdbcTemplate} for
@@ -78,7 +74,6 @@ public final class HibernateWriteOperationIntegrationTest
 		_jdbcTemplate = new JdbcTemplate(_dataSource);
 	}
 
-
 	/**
 	 * Runs any tear-down for our unit tests. In this case we destroy our {@link org.hibernate.Session} that we've been
 	 * using in our unit tests, then close our {@link org.hibernate.SessionFactory} we've injected.
@@ -89,7 +84,6 @@ public final class HibernateWriteOperationIntegrationTest
 		_session.close();
 		_sessionFactory.close();
 	}
-
 
 	/**
 	 * Tests to make sure that when we call our metric callable that we write our statistic to the database.
@@ -121,7 +115,6 @@ public final class HibernateWriteOperationIntegrationTest
 		_session.clear();
 		assertMethodCallStatisticEqualityByValue(stat, (MethodCallStatistic)_session.load(stat.getClass(), 1L));
 	}
-
 
 	/**
 	 * A convenience method, makes sure that our {@link org.epiphanic.instrumentation.performance.MethodCallStatistic} we

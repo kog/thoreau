@@ -5,12 +5,10 @@
  */
 package org.epiphanic.instrumentation.performance;
 
-
-import java.util.Date;
-
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 
+import java.util.Date;
 
 /**
  * An AOP based implementation of {@link org.epiphanic.instrumentation.performance.AbstractMetricGatherer}, uses the
@@ -79,13 +77,13 @@ public class AOPMetricGatherer extends AbstractMetricGatherer<MethodCallStatisti
 			{
 				// It's usually bad practice to throw inside a finally block. But we need this since we're doing some
 				// logging on our exceptions via AOP.
-				throw ex;
+                //noinspection ThrowFromFinallyBlock
+                throw ex;
 			}
 		}
 
 		return result;
 	}
-
 
 	/**
 	 * A convenience method to aid in testing - {@link java.lang.reflect.Method} is final and our interceptor returns
@@ -101,7 +99,6 @@ public class AOPMetricGatherer extends AbstractMetricGatherer<MethodCallStatisti
 		return methodInvocation.getMethod().getName();
 	}
 
-
 	/**
 	 * Another convenience method to aid in testing. Creates an instance of our {@link org.epiphanic.instrumentation.performance.MethodCallStatistic}
 	 * so that we can instrument it with mocks.<p/>
@@ -114,7 +111,6 @@ public class AOPMetricGatherer extends AbstractMetricGatherer<MethodCallStatisti
 	{
 		return new MethodCallStatistic();		
 	}
-
 
 	/**
 	 * Another convenience method to aid in testing. Returns the current {@link java.util.Date}.<p/>

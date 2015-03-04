@@ -5,7 +5,6 @@
  */
 package org.epiphanic.instrumentation.performance;
 
-
 /**
  * Provides an interface for {@link org.epiphanic.instrumentation.performance.BoringClassWithInstrumentableMethods} so
  * we can proxy by interface for our interception.<p/>

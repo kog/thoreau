@@ -5,9 +5,7 @@
  */
 package org.epiphanic.instrumentation.performance;
 
-
 import java.util.concurrent.Callable;
-
 
 /**
  * Provides a factory to create write operations. Given a statistic of type T (unbounded), spits out a {@link

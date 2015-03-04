@@ -5,9 +5,7 @@
  */
 package org.epiphanic.instrumentation.performance;
 
-
 import java.util.concurrent.ExecutorService;
-
 
 /**
  * Given an entity of type T, unbounded, wires together all the pieces necessary to log it to a persistent context: when
@@ -34,7 +32,6 @@ public class GenericAsynchronousLogger<T> implements IStatisticsLogger<T>
 	 */
 	private IWriteOperationFactory<T> _writeOperationFactory;
 
-
 	/**
 	 * Gets our injected {@link java.util.concurrent.ExecutorService} for consuming our write operation callables.
 	 *
@@ -45,7 +42,6 @@ public class GenericAsynchronousLogger<T> implements IStatisticsLogger<T>
 	{
 		return _messageProcessor;
 	}
-
 
 	/**
 	 * Sets the {@link java.util.concurrent.ExecutorService} implementation to use when consuming our write operation
@@ -58,7 +54,6 @@ public class GenericAsynchronousLogger<T> implements IStatisticsLogger<T>
 		_messageProcessor = messageProcessor;
 	}
 
-
 	/**
 	 * Gets the injected instance of {@link org.epiphanic.instrumentation.performance.IWriteOperationFactory} to use when
 	 * generating asynchronous write operations. Must not be <code>null</code>.
@@ -70,7 +65,6 @@ public class GenericAsynchronousLogger<T> implements IStatisticsLogger<T>
 		return _writeOperationFactory;
 	}
 
-
 	/**
 	 * Sets the {@link org.epiphanic.instrumentation.performance.IWriteOperationFactory} implementation to use when
 	 * creating asynchronous callbables containing our write operations.
@@ -81,7 +75,6 @@ public class GenericAsynchronousLogger<T> implements IStatisticsLogger<T>
 	{
 		_writeOperationFactory = writeOperationFactory;
 	}
-
 
 	@Override
 	public void writeStatistic(final T statistic)

@@ -5,7 +5,6 @@
  */
 package org.epiphanic.instrumentation.performance;
 
-
 /**
  * An abstract class that allows injection of a {@link org.epiphanic.instrumentation.performance.IStatisticsLogger}
  * implementation. Can be extended and wired up in any number of ways, and is the class that you use for instrumenting
@@ -21,7 +20,6 @@ public abstract class AbstractMetricGatherer<T>
 	 */
 	private IStatisticsLogger<T> _logger;
 
-
 	/**
 	 * Gets our injected {@link org.epiphanic.instrumentation.performance.IStatisticsLogger} to use when logging
 	 * statistics. Will not be <code>null</code>.
@@ -32,7 +30,6 @@ public abstract class AbstractMetricGatherer<T>
 	{
 		return _logger;
 	}
-
 
 	/**
 	 * Sets an instance of {@link org.epiphanic.instrumentation.performance.IStatisticsLogger} to use when logging our
