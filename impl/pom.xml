@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.epiphanic</groupId>
         <artifactId>thoreau</artifactId>
-        <version>${org.epiphanic.libraries.performance.version}</version>
+        <version>1.0.0.0</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -28,7 +28,7 @@
         <dependency>
             <groupId>org.epiphanic</groupId>
             <artifactId>thoreau-api</artifactId>
-            <version>${org.epiphanic.libraries.performance.version}</version>
+            <version>${project.version}</version>
         </dependency>
 
         <!-- Grab our third-party dependencies. -->
