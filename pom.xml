@@ -1,0 +1,81 @@
+<!--
+  ~ org-epiphanic-libraries-performance
+  ~ Copyright 2010 Epiphanic Networks
+  ~
+  ~ This source is licensed under the terms of the MIT license. Please see the distributed license.txt for details.
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.epiphanic</groupId>
+    <artifactId>org-epiphanic-libraries-performance</artifactId>
+    <packaging>pom</packaging>
+    <name>Thoreau - Instrumentation Library</name>
+    <version>${org.epiphanic.libraries.performance.version}</version>
+
+    <properties>
+        <org.springframework.version>3.0.5.RELEASE</org.springframework.version>
+        <org.epiphanic.libraries.performance.version>1.0.0.0</org.epiphanic.libraries.performance.version>
+    </properties>
+
+    <!-- Set up all the stuff we need to generate a pretty maven site -->
+    <licenses>
+        <license>
+            <name>The MIT license</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git://git@gitorious.org:thoreau/instrumentation.git</connection>
+        <developerConnection>scm:git:git://gitorious.org/thoreau/instrumentation.git</developerConnection>
+        <tag>master</tag>
+        <url>http://gitorious.org/thoreau/instrumentation/trees/master</url>
+    </scm>
+
+    <url>http://gitorious.org/thoreau/instrumentation</url>
+    <description>Instrumentation Libaries, part of Thoreau on Gitorious</description>
+    <inceptionYear>2010</inceptionYear>
+
+    <organization>
+        <name>Epiphanic Networks</name>
+        <url>http://epiphanic.org</url>
+    </organization>
+
+    <developers>
+        <developer>
+            <name>Greg Feigenson</name>
+            <id>Greg Feigenson</id>
+            <email>kog@epiphanic.org</email>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>-8</timezone>
+        </developer>
+    </developers>
+
+    <!-- The meat of the build -->
+    <modules>
+        <module>api</module>
+        <module>impl</module>
+    </modules>
+
+    <build>
+        <plugins>
+            <!-- Maven uses 1.3 out of the box, we're targeting Java6.-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

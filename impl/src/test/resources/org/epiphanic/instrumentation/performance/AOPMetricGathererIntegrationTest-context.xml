@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ org-epiphanic-libraries-performance
+  ~ Copyright 2010 Epiphanic Networks
+  ~
+  ~ This source is licensed under the terms of the MIT license. Please see the distributed license.txt for details.
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Set up Hibernate -->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
+        <property name="url" value="jdbc:hsqldb:data/aop-testing" />
+        <property name="username" value="sa" />
+        <property name="password" value="" />
+    </bean>
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="annotatedClasses">
+            <list>
+                <value>org.epiphanic.instrumentation.performance.MethodCallStatistic</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+                <prop key="hibernate.show_sql">false</prop>
+                <prop key="hibernate.hbm2ddl.auto">create</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- Build our object graph -->
+    <bean name="metricGatherer" class="org.epiphanic.instrumentation.performance.AOPMetricGatherer">
+        <property name="statisticsLogger" ref="statisticsLogger"/>
+    </bean>
+
+    <bean name="statisticsLogger" class="org.epiphanic.instrumentation.performance.MethodCallAsynchronousLogger">
+        <property name="messageProcessor" ref="executor"/>
+        <property name="writeOperationFactory" ref="writeOperationFactory"/>
+    </bean>
+
+    <bean name="writeOperationFactory" class="org.epiphanic.instrumentation.performance.HibernateWriteOperationFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!-- TODO: GregF 04/11/2010 - look for an executor that uses the current thread and blocks for testing. -->
+    <bean name="executor" class="java.util.concurrent.Executors" factory-method="newSingleThreadExecutor"/>
+
+    <!-- Wire up our AOP interception. -->
+    <bean name="performanceInstrumentationInterceptor" class="org.epiphanic.instrumentation.performance.AOPMetricGatherer">
+        <property name="statisticsLogger" ref="statisticsLogger"/>
+    </bean>
+
+    <bean name="instrumentedClass" class="org.epiphanic.instrumentation.performance.BoringClassWithInstrumentableMethods"/>
+
+    <bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+      <property name="beanNames" value="instrumentedClass"/>
+      <property name="interceptorNames">
+        <list>
+          <value>performanceInstrumentationInterceptor</value>
+        </list>
+      </property>
+    </bean>
+</beans>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        
+<!--
+  ~ org-epiphanic-libraries-performance
+  ~ Copyright 2010 Epiphanic Networks
+  ~
+  ~ This source is licensed under the terms of the MIT license. Please see the distributed license.txt for details.
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Set up Hibernate -->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
+        <property name="url" value="jdbc:hsqldb:data/writeop-testing" />
+        <property name="username" value="sa" />
+        <property name="password" value="" />
+    </bean>
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="annotatedClasses">
+            <list>
+                <value>org.epiphanic.instrumentation.performance.MethodCallStatistic</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+                <prop key="hibernate.show_sql">false</prop>
+                <prop key="hibernate.hbm2ddl.auto">create</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- Wire up our class under test -->
+    <bean name="hibernateWriteOperationFactory" class="org.epiphanic.instrumentation.performance.HibernateWriteOperationFactory">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+</beans>
